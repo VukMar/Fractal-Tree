@@ -1,0 +1,87 @@
+#include <SFML/Graphics.hpp>
+#include <sstream>
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include "line.hpp"
+#include "D:/VS Code Vuk/C++/SFMLUI/include/UI_Slider.hpp"
+#include "D:/VS Code Vuk/C++/SFMLUI/include/UI_Button.hpp"
+#include "../include/CyberFont.hpp"
+
+/////////////////////////////////////////////////////////////////////////////////////
+/// @brief This class represents the whole app. The app is called form main funtion.
+/////////////////////////////////////////////////////////////////////////////////////
+class Application
+{
+private:
+
+// Window for the app.
+sf::RenderWindow app;
+
+// Data containing font info.
+CyberFont cf;
+
+// Standard vector containging lines that represent tree branches.
+std::vector<Line> Lines;
+
+bool generate = false;
+
+int angle;
+int depth = 1;
+
+sf::Vector2f GenButtonPos;
+sf::Vector2f GenButtonSize;
+
+sf::Vector2f AngSliderPos;
+sf::Vector2f AngSliderSize;
+
+vui::Button GenerateB;
+vui::Slider AngleS;
+
+sf::Font font;
+sf::Text TreeSize;
+
+/////////////////////////////////////////////////////////////////////////////////////
+/// @brief Creates a line based on give parameters.
+/// @param x Line X-axis Position.
+/// @param y Line Y-axis Position.
+/// @param len Length of a line.
+/// @param angle direction angle.
+/////////////////////////////////////////////////////////////////////////////////////
+void lineCreate(float x, float y, float len, float angle);
+
+/////////////////////////////////////////////////////////////////////////////////////
+/// @brief Pushes calibrated tree to a vector of lines used to display the tree.
+/// @param x Starting position X-axis.
+/// @param y Starting position Y-axis.
+/// @param len Starting line length.
+/// @param angle Starting line angle.
+/// @param len_div Next branch line length.
+/// @param angle_div Branch angle.
+/// @param depth Tree size.
+/////////////////////////////////////////////////////////////////////////////////////
+void treeCreate(float x, float y, float len, float angle,float len_div, float angle_div, float depth);
+
+/////////////////////////////////////////////////////////////////////////////////////
+/// @brief Tunes positions of UI objects. Based of window parameters.
+/////////////////////////////////////////////////////////////////////////////////////
+void tunePositions();
+
+public:
+/////////////////////////////////////////////////////////////////////////////////////
+/// @brief Standard constructor.
+/////////////////////////////////////////////////////////////////////////////////////
+Application();
+
+/////////////////////////////////////////////////////////////////////////////////////
+/// @brief Standard destructor.
+/////////////////////////////////////////////////////////////////////////////////////
+~Application();
+
+/////////////////////////////////////////////////////////////////////////////////////
+/// @brief Runs the app form main function.
+/////////////////////////////////////////////////////////////////////////////////////
+void run();
+
+
+};
